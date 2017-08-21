@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Product xmlns="http://schemas.microsoft.com/developer/2004/01/bootstrapper" ProductCode="Microsoft.SqlServer.SqlLocalDB.13.0">
+  <RelatedProducts>
+    <IncludesProduct Code="Microsoft.SqlServer.SqlLocalDB.13.0" />
+  </RelatedProducts>
+
+  <PackageFiles CopyAllPackageFiles="false">
+   
+    <PackageFile
+      Name="sqllocaldb.msi"
+      HomeSite="sqllocaldb"
+      PublicKey="3082010a0282010100932edad8e63e98d91b0f645f4da8584d143bf77a84fc3c11313aef89c24a2d41a5485ddd129eefab662834d57d2a557b4c4d8af2c0f1b2d352158bb6b308b88b500bdd7ffb6a09a0dc6704c4f1dfbc75182040be782c9956ddeef52edd3e42f95a1f30ae01148ab082b551a0e26d65fef7180a8d306d4d3aa7c5f3362dee5f2ca09200b11c4ce2cbf7ff24257fd78fc0dd976eceb217b6c71c44a724ca7e81e6e631b916d95d3ed168eebecd48d0862caedc0e21c1c08ac3ee1b935913f6c63b8072188853fbabbf303ea077bd5288bf7ad8e8b093ada11b8cd47ea6105010bee1c81c64fa872efbc4476616c0847b36af5fba85446c020f2de0b00e1ba23e250203010001"
+    />
+  </PackageFiles>
+
+  <InstallChecks>
+    <!-- Check if already installed -->
+    <FileCheck
+      Property="sqllocaldbVersion"
+      FileName="sqlservr.exe"
+      SearchPath="Microsoft SQL Server\130\LocalDB\Binn"
+      SpecialFolder="ProgramFilesFolder"
+    />
+    <!-- Check for x64 install from x86 installer -->
+    <FileCheck
+      Property="sqllocaldbVersion_x64"
+      FileName="sqlservr.exe"
+      SearchPath="Program Files\Microsoft SQL Server\130\LocalDB\Binn"
+      SpecialFolder="WindowsVolume"
+    />
+  </InstallChecks>
+
+  <Commands Reboot="Defer">
+   <Command PackageFile="sqllocaldb.msi" Arguments="IACCEPTSQLLOCALDBLICENSETERMS=YES" EstimatedInstallSeconds="90">
+      <InstallConditions>
+        <BypassIf Property="ProcessorArchitecture" Compare="ValueNotEqualTo" Value="amd64" />
+        <BypassIf Property="sqllocaldbVersion" Compare="VersionGreaterThanOrEqualTo" Value="13.0.2151.0" />
+        <BypassIf Property="sqllocaldbVersion_x64" Compare="VersionGreaterThanOrEqualTo" Value="13.0.2151.0" />
+      </InstallConditions>
+      <ExitCodes>
+        <ExitCode Value="0" Result="Success" />
+        <ExitCode Value="1641" Result="SuccessReboot" />
+        <ExitCode Value="3010" Result="SuccessReboot" />
+        <DefaultExitCode Result="Fail" String="GeneralFailure" FormatMessageFromSystem="true" />
+      </ExitCodes>
+    </Command>
+  </Commands>
+</Product>
