@@ -6,7 +6,7 @@ ClickOnce and Visual Studio Installer bootstrapper package for Microsoft SQL Ser
 Clone the repository to your computer or download and extract one of the attached archives from the latest release. 
 Copy the whole `SqlLocalDB2016` folder to the bootstrapper `Packages` folder, e.g. `C:\Program Files (x86)\Microsoft Visual Studio [VS_Version]\SDK\Bootstrapper\Packages`. 
 
-Latest Visual Studios changed that folder location to something like 'C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages'
+Latest Visual Studios changed that folder location to something like `C:\Program Files (x86)\Microsoft SDKs\ClickOnce Bootstrapper\Packages`
 The path to this folder can be found in the registry in the `Path` value from the following registry key (where `14.0` should be replaced with the Visual Studio version you're using):
 
 > HKLM\Software\Microsoft\GenericBootstrapper\[VS_Version]
