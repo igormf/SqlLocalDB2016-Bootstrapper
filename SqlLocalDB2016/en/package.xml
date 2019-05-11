@@ -6,7 +6,7 @@
   <Strings>
     <String Name="Culture">en</String>
     <String Name="DisplayName">SQL Server 2016 Express LocalDB</String>
-	<String Name="sqllocaldb">https://download.microsoft.com/download/E/1/2/E12B3655-D817-49BA-B934-CEB9DAC0BAF3/SqlLocalDB.msi</String>
+	<String Name="sqllocaldb">https://download.microsoft.com/download/9/0/7/907AD35F-9F9C-43A5-9789-52470555DB90/ENU/SqlLocalDB.msi</String>
     <String Name="AdminRequired">You do not have the permissions required to install SQL Server 2016 Express LocalDB. Please contact your administrator.</String>
     <String Name="GeneralFailure">An error occurred attempting to install SQL Server 2016 Express LocalDB.</String>
     <String Name="InvalidPlatformOS">The current operating system version does not support SQL Server 2016 Express LocalDB.</String>
